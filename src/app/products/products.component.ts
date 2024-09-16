@@ -8,6 +8,7 @@ import {Component, OnInit} from '@angular/core';
 export class  ProductsComponent implements OnInit{
 
   public products : any;
+  public keyword : string = "";
 
   constructor() {
   }
@@ -24,5 +25,9 @@ export class  ProductsComponent implements OnInit{
   deleteProduct(p: any) {
     let index = this.products.indexOf(p);//retourne indice de numéro d'un éléments
     this.products.splice(index, 1);//supprimer l'élément avec le numéro index , juste sipprimer un seule
+  }
+
+  search() {
+    this.products = this.products.filter((p: any) => p.name.includes(this.keyword));
   }
 }
